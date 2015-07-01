@@ -16,7 +16,7 @@ exports.load = function(req, res, next, quizId) {
   ).catch(function(error){next(error)});
 };
 
-//GEt /quizes
+//GEt /quizes 
 exports.index = function(req, res) {
   var search = req.query.search || '';
   models.Quiz.findAll(
