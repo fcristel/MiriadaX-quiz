@@ -4,9 +4,10 @@
   <input type="submit" value="Enviar" />
 </form>
 
-<table>
+<table border="1" style="border-collapse: separate; border-spacing:5px;">
   <% var i; for (i=0; i < quizes.length; i++) { %>
     <tr>
+      <td><%= quizes[i].tema %></td>
       <td><a href="/quizes/<%= quizes[i].id %>"><%= quizes[i].pregunta %></a></td>
       <% if (session.user) { %>
         <td><a href="/quizes/<%= quizes[i].id %>/edit"><button>editar</button></a></td>
@@ -22,15 +23,15 @@
   <% } %>
   <% if (quizes.length == 0) { %>
     <tr>
-      <td>No se encuentran preguntas con los criterios de búsqueda seleccionados.</td>
+      <td colspan="4">No se encuentran preguntas con los criterios de búsqueda seleccionados.</td>
     </tr>
     <tr>
-      <td>Por favor, cambie el filtro e inténtelo de nuevo.</td>
+      <td colspan="4">Por favor, cambie el filtro e inténtelo de nuevo.</td>
     </tr>
   <% } %>
   <% if (session.user) { %>
     <tr>
-      <td><a href="/quizes/new"><button type="button">Crear pregunta</button></a></td>
+      <td colspan="4"><a href="/quizes/new"><button type="button" style="width: 100%">Crear pregunta</button></a></td>
     </tr>
   <% } %>
 </table>
