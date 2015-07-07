@@ -5,7 +5,8 @@ exports.load = function(req, res, next, quizId) {
   models.Quiz.find({
             where: {
                 id: Number(quizId)
-            }
+            },
+            include: [{ model: models.Comment }]
         }).then(
     function(quiz) {
       if (quiz) {
@@ -60,7 +61,7 @@ exports.new = function(req, res) {
 //POST /quizes/create
 exports.create = function(req, res) {
   var quiz = models.Quiz.build( req.body.quiz );
- 
+
   quiz
   .validate()
   .then(
